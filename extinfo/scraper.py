@@ -1,11 +1,15 @@
 import requests
 from bs4 import BeautifulSoup as bs
+from requests.exceptions import HTTPError
 
 
 def _fetch(extension: str) -> str:
     url = f"https://fileinfo.com/extension/{extension}"
     r = requests.get(url)
-    r.raise_for_status()
+    try:
+        r.raise_for_status()
+    except HTTPError as e:
+        return str(e)
 
     soup = bs(r.text, "html.parser")
     headers = soup.find_all("h2")
