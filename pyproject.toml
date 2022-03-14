@@ -22,6 +22,8 @@ extinfo = "extinfo.cli:cli"
 python = "^3.10"
 click = "^8.0.3"
 deal = "^4.19.1"
+requests = "^2.27.1"
+beautifulsoup4 = "^4.10.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.10b0"
@@ -34,6 +36,7 @@ mypy = "^0.910"
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
 flake8-docstrings = "^1.6.0"
+types-requests = "^2.27.12"
 
 [tool.mypy]
 plugins = ["deal.mypy"]

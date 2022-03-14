@@ -3,6 +3,8 @@ import sys
 import click
 import deal
 
+from .scraper import _fetch
+
 deal.activate()
 
 
@@ -10,8 +12,12 @@ deal.activate()
     no_args_is_help=True,
 )
 @click.version_option()
-def cli() -> int:
-    raise NotImplementedError
+@click.argument("extension", type=str)
+def cli(extension: str) -> int:
+    result = _fetch(extension)
+    print(result)
+
+    return 0
 
 
 if __name__ == "__main__":
