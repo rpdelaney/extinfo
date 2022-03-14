@@ -10,8 +10,6 @@ extinfo
 .. |STYLE| image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
 .. |LANGUAGE| image:: https://img.shields.io/pypi/pyversions/extinfo
-.. |MAINTAINABILITY| image:: https://img.shields.io/codeclimate/maintainability-percentage/rpdelaney/extinfo
-   :target: https://codeclimate.com/github/rpdelaney/extinfo
 
 Given a file extension, extinfo will scrape web sources for information about
 what type of file is usually named with that extension.
