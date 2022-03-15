@@ -3,11 +3,13 @@ import urllib.parse
 import requests
 from bs4 import BeautifulSoup as bs
 
+from ..utils import Report
+
 SITE = "fileinfo.com"
 PATH = "/extension/"
 
 
-def extract(extension: str) -> str:
+def extract(extension: str) -> Report:
     soup = _fetch(extension)
     return _parse(soup)
 
@@ -22,7 +24,7 @@ def _fetch(extension: str) -> bs:
     return soup
 
 
-def _parse(soup: bs) -> str:
+def _parse(soup: bs) -> Report:
     # TODO: make this not horrific and awful
     #
     headers = soup.find_all("h2")
@@ -34,13 +36,9 @@ def _parse(soup: bs) -> str:
     info1 = (
         infoboxes[1].text.strip().replace("\n\n\n", "\n").replace("\n", "\n\n")
     )
-    result = "\n\n".join(
-        [
-            f"# {header0}",
-            f"{info0}\n",
-            f"# {header1}",
-            info1,
-        ]
+    report = Report(
+        description_short=header0,
+        description_long=info0,
+        how_to_open=info1,
     )
-
-    return result
+    return report

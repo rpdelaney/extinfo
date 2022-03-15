@@ -24,7 +24,10 @@ def cli(extension: str) -> int:
             print(str(e))
         else:
             print(f"From {extractor.SITE}\n")
-            print(result)
+            print(
+                f"# {result.description_short}\n\n",
+                f"{result.description_long}",
+            )
 
     return 0
 
