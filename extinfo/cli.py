@@ -16,7 +16,7 @@ __EXTRACTORS__ = [fileinfo_com]
 )
 @click.version_option()
 @click.argument("extension", type=str)
-def cli(extension: str) -> int:
+def cli(extension: str) -> None:
     for extractor in __EXTRACTORS__:
         try:
             result = extractor.extract(extension)
@@ -28,9 +28,6 @@ def cli(extension: str) -> int:
                 f"# {result.description_short}\n\n",
                 f"{result.description_long}",
             )
+            sys.exit(0)
 
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(cli())
+    sys.exit(1)
