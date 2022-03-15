@@ -2,10 +2,13 @@ import sys
 
 import click
 import deal
+from requests.exceptions import HTTPError
 
-from .scraper import _fetch
+from extinfo.extractors import fileinfo_com
 
 deal.activate()
+
+__EXTRACTORS__ = [fileinfo_com]
 
 
 @click.command(
@@ -14,8 +17,14 @@ deal.activate()
 @click.version_option()
 @click.argument("extension", type=str)
 def cli(extension: str) -> int:
-    result = _fetch(extension)
-    print(result)
+    for extractor in __EXTRACTORS__:
+        try:
+            result = extractor.extract(extension)
+        except HTTPError as e:
+            print(str(e))
+        else:
+            print(f"From {extractor.SITE}\n")
+            print(result)
 
     return 0
 
