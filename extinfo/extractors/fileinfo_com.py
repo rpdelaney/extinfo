@@ -1,31 +1,13 @@
 import re
-import urllib.parse
 
-import requests
-from bs4 import BeautifulSoup as bs
-
-from ..utils import Report
+from ..utils import Report, fetch
 
 SITE = "fileinfo.com"
 PATH = "/extension/"
 
 
 def extract(extension: str) -> Report:
-    soup = _fetch(extension)
-    return _parse(soup)
-
-
-def _fetch(extension: str) -> bs:
-    url = urllib.parse.urljoin(f"https://{SITE}", f"{PATH}/{extension}")
-    r = requests.get(url)
-    r.raise_for_status()
-
-    soup = bs(r.text, "html.parser")
-
-    return soup
-
-
-def _parse(soup: bs) -> Report:
+    soup = fetch(site=SITE, path=PATH, extension=extension)
     description_short = soup.find_all("h2")[0].text.strip()
 
     infoboxes = soup.find_all(attrs={"class": "infoBox"})
