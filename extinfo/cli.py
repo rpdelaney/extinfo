@@ -26,7 +26,8 @@ def cli(extension: str) -> None:
             print(f"From {extractor.SITE}\n")
             print(
                 f"# {result.description_short}\n\n",
-                f"{result.description_long}",
+                f"{result.description_long}\n\n",
+                f"{result.how_to_open}",
             )
             sys.exit(0)
 

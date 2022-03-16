@@ -1,4 +1,5 @@
 import urllib.parse
+import re
 
 import requests
 from bs4 import BeautifulSoup as bs
@@ -25,20 +26,15 @@ def _fetch(extension: str) -> bs:
 
 
 def _parse(soup: bs) -> Report:
-    # TODO: make this not horrific and awful
-    #
-    headers = soup.find_all("h2")
-    header0 = headers[0].text.strip()
-    header1 = headers[1].text.strip()
+    description_short = soup.find_all("h2")[0].text.strip()
 
     infoboxes = soup.find_all(attrs={"class": "infoBox"})
-    info0 = infoboxes[0].text.strip()
-    info1 = (
-        infoboxes[1].text.strip().replace("\n\n\n", "\n").replace("\n", "\n\n")
-    )
+    description_long = infoboxes[0].text.strip()
+    how_to_open = re.sub(r"\n+", "\n\n", infoboxes[1].text).strip()
+
     report = Report(
-        description_short=header0,
-        description_long=info0,
-        how_to_open=info1,
+        description_short=description_short,
+        description_long=description_long,
+        how_to_open=how_to_open,
     )
     return report
