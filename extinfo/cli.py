@@ -4,11 +4,12 @@ import click
 import deal
 from requests.exceptions import HTTPError
 
+import extinfo.extractors.Extractor as Extractor
 from extinfo.extractors import fileinfo_com
 
 deal.activate()
 
-__EXTRACTORS__ = [fileinfo_com]
+__EXTRACTORS__ = [Extractor(fileinfo_com)]
 
 
 @click.command(
@@ -23,7 +24,7 @@ def cli(extension: str) -> None:
         except HTTPError as e:
             print(str(e))
         else:
-            print(f"From {extractor.SITE}\n")
+            print(f"From {extractor.site}\n")
             print(
                 f"# {result.description_short}\n\n",
                 f"{result.description_long}\n\n",
