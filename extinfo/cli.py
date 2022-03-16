@@ -2,10 +2,11 @@ import sys
 
 import click
 import deal
-from requests.exceptions import HTTPError
 
 import extinfo.extractors.Extractor as Extractor
 from extinfo.extractors import fileinfo_com
+
+from .exceptions import ExtensionNotFoundError
 
 deal.activate()
 
@@ -21,7 +22,7 @@ def cli(extension: str) -> None:
     for extractor in __EXTRACTORS__:
         try:
             result = extractor.extract(extension)
-        except HTTPError as e:
+        except ExtensionNotFoundError as e:
             print(str(e))
         else:
             print(f"From {extractor.site}\n")

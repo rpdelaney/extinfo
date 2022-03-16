@@ -4,6 +4,8 @@ from dataclasses import dataclass
 import requests
 from bs4 import BeautifulSoup as bs
 
+from .exceptions import ExtensionNotFoundError
+
 
 @dataclass
 class Report:
@@ -14,9 +16,13 @@ class Report:
 
 def fetch(*, site: str, path: str, extension: str) -> bs:
     url = urllib.parse.urljoin(f"https://{site}", f"{path}/{extension}")
+
     r = requests.get(url)
-    r.raise_for_status()
 
-    soup = bs(r.text, "html.parser")
-
-    return soup
+    match r.status_code:
+        case 404:
+            raise ExtensionNotFoundError(f"404 from site for url: {url}")
+        case 200:
+            return bs(r.text, "html.parser")
+        case _:
+            r.raise_for_status()
