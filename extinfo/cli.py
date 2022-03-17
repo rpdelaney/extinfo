@@ -3,14 +3,17 @@ import sys
 import click
 import deal
 
-from extinfo.extractors import fileinfo_com
+from extinfo.extractors import fileinfo_com, filesuffix_com
 
 from .exceptions import ExtensionNotFoundError
 from .utils import Extractor
 
 deal.activate()
 
-__EXTRACTORS__ = [Extractor(fileinfo_com)]
+__EXTRACTORS__ = [
+    Extractor(filesuffix_com),
+    Extractor(fileinfo_com),
+]
 
 
 @click.command(
