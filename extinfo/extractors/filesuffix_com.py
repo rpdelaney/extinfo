@@ -8,7 +8,7 @@ PATH = "/en/extension"
 
 def extract(extension: str) -> list[Report]:
     soup = fetch(site=SITE, path=PATH, extension=extension)
-    result = result = soup.find(
+    result = soup.find(
         name="div",
         attrs={"id": "result"},
     ).findChild(attrs={"class": ["exttab"]})
