@@ -8,9 +8,10 @@ PATH = "/en/extension"
 
 def extract(extension: str) -> Report:
     soup = fetch(site=SITE, path=PATH, extension=extension)
-    result = result = soup.find(name="div", attrs={"id": "result"}).findChild(
-        attrs={"class": ["exttab"]}
-    )
+    result = result = soup.find(
+        name="div",
+        attrs={"id": "result"},
+    ).findChild(attrs={"class": ["exttab"]})
 
     description_short = "".join(
         c
@@ -25,11 +26,14 @@ def extract(extension: str) -> Report:
         attrs={"class": ["el"]},
     ).text.strip()
     how_to_open = (
-        result.findChild(
-            name="a",
-            attrs={"class": ["sl"]},
+        (
+            result.findChild(
+                name="a",
+                attrs={"class": ["sl"]},
+            )
+            or {}
         )
-        .get("title")
+        .get("title", "")
         .strip()
     )
 
