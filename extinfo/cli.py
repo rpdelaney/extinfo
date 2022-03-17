@@ -3,10 +3,10 @@ import sys
 import click
 import deal
 
-import extinfo.extractors.Extractor as Extractor
 from extinfo.extractors import fileinfo_com
 
 from .exceptions import ExtensionNotFoundError
+from .utils import Extractor
 
 deal.activate()
 

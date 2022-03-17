@@ -1,5 +1,6 @@
 import urllib.parse
 from dataclasses import dataclass
+from types import ModuleType
 
 import requests
 from bs4 import BeautifulSoup as bs
@@ -26,3 +27,9 @@ def fetch(*, site: str, path: str, extension: str) -> bs:
             return bs(r.text, "html.parser")
         case _:
             r.raise_for_status()
+
+
+class Extractor:
+    def __init__(self, extractor_module: ModuleType) -> None:
+        self.extract = extractor_module.extract
+        self.site = extractor_module.SITE
