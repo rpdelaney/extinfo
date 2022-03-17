@@ -29,6 +29,7 @@ def cli(extension: str) -> None:
             print(
                 f"# {result.description_short}\n\n",
                 f"{result.description_long}\n\n",
+                "# How to open\n\n",
                 f"{result.how_to_open}",
             )
             sys.exit(0)
