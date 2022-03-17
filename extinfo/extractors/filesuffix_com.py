@@ -6,7 +6,7 @@ SITE = "filesuffix.com"
 PATH = "/en/extension"
 
 
-def extract(extension: str) -> Report:
+def extract(extension: str) -> list[Report]:
     soup = fetch(site=SITE, path=PATH, extension=extension)
     result = result = soup.find(
         name="div",
@@ -37,8 +37,10 @@ def extract(extension: str) -> Report:
         .strip()
     )
 
-    return Report(
-        description_short=description_short,
-        description_long=description_long,
-        how_to_open=how_to_open,
-    )
+    return [
+        Report(
+            description_short=description_short,
+            description_long=description_long,
+            how_to_open=how_to_open,
+        )
+    ]

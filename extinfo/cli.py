@@ -24,7 +24,7 @@ __EXTRACTORS__ = [
 def cli(extension: str) -> None:
     for extractor in __EXTRACTORS__:
         try:
-            result = extractor.extract(extension)
+            result = extractor.extract(extension)[0]
         except ExtensionNotFoundError as e:
             print(str(e))
         else:

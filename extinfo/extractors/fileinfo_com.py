@@ -6,7 +6,7 @@ SITE = "fileinfo.com"
 PATH = "/extension/"
 
 
-def extract(extension: str) -> Report:
+def extract(extension: str) -> list[Report]:
     soup = fetch(site=SITE, path=PATH, extension=extension)
     description_short = soup.find_all("h2")[0].text.strip()
 
@@ -19,4 +19,4 @@ def extract(extension: str) -> Report:
         description_long=description_long,
         how_to_open=how_to_open,
     )
-    return report
+    return [report]
