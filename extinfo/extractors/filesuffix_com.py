@@ -21,10 +21,12 @@ def extract(extension: str) -> list[Report]:
         ).text.strip()
         if c in string.ascii_letters + " "
     ).strip()
+
     description_long = result.findChild(
         name="div",
         attrs={"class": ["el"]},
     ).text.strip()
+
     how_to_open = (
         (
             result.findChild(
