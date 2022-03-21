@@ -33,6 +33,8 @@ def cli(extension: str) -> None:
                 print(f"# {report.description_short}")
                 print(report.description_long)
                 print("")
+                print(report.how_to_open)
+                print("")
             sys.exit(0)
 
     sys.exit(1)
