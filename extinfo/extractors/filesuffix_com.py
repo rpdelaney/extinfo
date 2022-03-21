@@ -19,6 +19,9 @@ def _parse_result(soup: bs) -> Report:
         name="div",
         attrs={"class": ["el"]},
     ).text.strip()
+    prefix = "Description:"
+    if description_long.startswith(prefix):
+        description_long = description_long[len(prefix) :]  # noqa: E203
 
     how_to_open = (
         (
