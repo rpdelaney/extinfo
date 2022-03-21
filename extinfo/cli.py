@@ -38,6 +38,5 @@ def cli(extension: str) -> None:
                 if report.how_to_open:
                     print(report.how_to_open)
                     print("")
-            sys.exit(0)
 
     sys.exit(1)
