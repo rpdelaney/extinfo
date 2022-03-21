@@ -24,17 +24,15 @@ __EXTRACTORS__ = [
 def cli(extension: str) -> None:
     for extractor in __EXTRACTORS__:
         try:
-            result = extractor.extract(extension)[0]
+            results = extractor.extract(extension)
         except ExtensionNotFoundError as e:
             print(str(e))
         else:
             print(f"From {extractor.site}\n")
-            print(
-                f"# {result.description_short}\n\n",
-                f"{result.description_long}\n\n",
-                "# How to open\n\n",
-                f"{result.how_to_open}",
-            )
+            for report in results:
+                print(f"# {report.description_short}")
+                print(report.description_long)
+                print("")
             sys.exit(0)
 
     sys.exit(1)
