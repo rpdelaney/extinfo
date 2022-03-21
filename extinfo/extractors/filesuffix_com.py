@@ -1,35 +1,28 @@
 import string
 
+from bs4 import BeautifulSoup as bs
+
 from ..utils import Report, fetch
 
 SITE = "filesuffix.com"
 PATH = "/en/extension"
 
 
-def extract(extension: str) -> list[Report]:
-    soup = fetch(site=SITE, path=PATH, extension=extension)
-    result = soup.find(
-        name="div",
-        attrs={"id": "result"},
-    ).findChild(attrs={"class": ["exttab"]})
-
+def _parse_result(soup: bs) -> Report:
     description_short = "".join(
         c
-        for c in result.findChild(
-            name="h2",
-            attrs={"id": "ext0"},
-        ).text.strip()
+        for c in soup.findChild(name="h2").text
         if c in string.ascii_letters + " "
     ).strip()
 
-    description_long = result.findChild(
+    description_long = soup.findChild(
         name="div",
         attrs={"class": ["el"]},
     ).text.strip()
 
     how_to_open = (
         (
-            result.findChild(
+            soup.findChild(
                 name="a",
                 attrs={"class": ["sl"]},
             )
@@ -39,10 +32,15 @@ def extract(extension: str) -> list[Report]:
         .strip()
     )
 
-    return [
-        Report(
-            description_short=description_short,
-            description_long=description_long,
-            how_to_open=how_to_open,
-        )
-    ]
+    return Report(
+        description_short=description_short,
+        description_long=description_long,
+        how_to_open=how_to_open,
+    )
+
+
+def extract(extension: str) -> list[Report]:
+    soup = fetch(site=SITE, path=PATH, extension=extension)
+    exttabs = soup.find_all(name="div", class_="exttab")
+
+    return [_parse_result(exttab) for exttab in exttabs]
