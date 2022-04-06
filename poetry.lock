@@ -8,7 +8,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
 
 [[package]]
 name = "astroid"
-version = "2.11.0"
+version = "2.11.2"
 description = "An abstract syntax tree for Python with inference support."
 category = "main"
 optional = false
@@ -102,11 +102,11 @@ unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
-version = "8.0.4"
+version = "8.1.2"
 description = "Composable command line interface toolkit"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
@@ -135,7 +135,7 @@ toml = ["tomli"]
 
 [[package]]
 name = "deal"
-version = "4.21.0"
+version = "4.21.1"
 description = "**Deal** is a Python library for [design by contract][wiki] (DbC) programming."
 category = "main"
 optional = false
@@ -148,7 +148,7 @@ vaa = ">=0.2.1"
 [package.extras]
 all = ["deal-solver", "hypothesis", "pygments", "typeguard"]
 docs = ["m2r2", "myst-parser", "sphinx (>=3.5.0,<3.6.0)", "sphinx-rtd-theme (>=0.5.0,<0.6.0)"]
-lint = ["flake8", "flake8-commas", "flake8-quotes", "mypy (>=0.900)", "mypy_test (>=0.1.1)", "isort"]
+lint = ["flake8", "flake8-commas", "flake8-quotes", "mypy (>=0.900)", "mypy_test (>=0.1.1)", "isort", "deal-solver", "hypothesis", "pygments", "typeguard"]
 test = ["coverage", "docstring-parser", "isort", "marshmallow", "pytest-cov", "pytest", "sphinx", "urllib3", "deal-solver", "hypothesis", "pygments", "typeguard"]
 
 [[package]]
@@ -450,7 +450,7 @@ python-versions = "*"
 
 [[package]]
 name = "soupsieve"
-version = "2.3.1"
+version = "2.3.2"
 description = "A modern CSS selector implementation for Beautiful Soup."
 category = "main"
 optional = false
@@ -474,7 +474,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "types-requests"
-version = "2.27.13"
+version = "2.27.16"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
@@ -543,8 +543,8 @@ astor = [
     {file = "astor-0.8.1.tar.gz", hash = "sha256:6a6effda93f4e1ce9f618779b2dd1d9d84f1e32812c23a29b3fff6fd7f63fa5e"},
 ]
 astroid = [
-    {file = "astroid-2.11.0-py3-none-any.whl", hash = "sha256:e59b9d0788aa8ded1a49172ff5d4cd26d5d5aa9cb2dacd50a03a3bbf05d3cc92"},
-    {file = "astroid-2.11.0.tar.gz", hash = "sha256:d56f6a5239981567ceaa3413d4971936c7b4b0c796fcff90c24254dcf8b05b62"},
+    {file = "astroid-2.11.2-py3-none-any.whl", hash = "sha256:cc8cc0d2d916c42d0a7c476c57550a4557a083081976bf42a73414322a6411d9"},
+    {file = "astroid-2.11.2.tar.gz", hash = "sha256:8d0a30fe6481ce919f56690076eafbb2fb649142a89dc874f1ec0e7a011492d0"},
 ]
 atomicwrites = [
     {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
@@ -571,8 +571,8 @@ charset-normalizer = [
     {file = "charset_normalizer-2.0.12-py3-none-any.whl", hash = "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"},
 ]
 click = [
-    {file = "click-8.0.4-py3-none-any.whl", hash = "sha256:6a7a62563bbfabfda3a38f3023a1db4a35978c0abd76f6c9605ecd6554d6d9b1"},
-    {file = "click-8.0.4.tar.gz", hash = "sha256:8458d7b1287c5fb128c90e23381cf99dcde74beaf6c7ff6384ce84d6fe090adb"},
+    {file = "click-8.1.2-py3-none-any.whl", hash = "sha256:24e1a4a9ec5bf6299411369b208c1df2188d9eb8d916302fe6bf03faed227f1e"},
+    {file = "click-8.1.2.tar.gz", hash = "sha256:479707fe14d9ec9a0757618b7a100a0ae4c4e236fac5b7f80ca68028141a1a72"},
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
@@ -622,8 +622,8 @@ coverage = [
     {file = "coverage-6.3.2.tar.gz", hash = "sha256:03e2a7826086b91ef345ff18742ee9fc47a6839ccd517061ef8fa1976e652ce9"},
 ]
 deal = [
-    {file = "deal-4.21.0-py3-none-any.whl", hash = "sha256:8a2fde41f6bc42a230c9b4167714c3f2d94e163269d500709859c8c5a9fa379a"},
-    {file = "deal-4.21.0.tar.gz", hash = "sha256:aff85613e1bc89b9a89ae6350ce56a84e6dfca8fc6c3f6382b54bf6db74a1cf0"},
+    {file = "deal-4.21.1-py3-none-any.whl", hash = "sha256:707c34d56f84bb9fea28bfc5fc253b16929d92da9b7464030c75a542c414e81f"},
+    {file = "deal-4.21.1.tar.gz", hash = "sha256:01165187655edc469583614349f7654a4acabfb18ba41da0c7f34b781e7898fe"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
@@ -786,8 +786,8 @@ snowballstemmer = [
     {file = "snowballstemmer-2.2.0.tar.gz", hash = "sha256:09b16deb8547d3412ad7b590689584cd0fe25ec8db3be37788be3810cbf19cb1"},
 ]
 soupsieve = [
-    {file = "soupsieve-2.3.1-py3-none-any.whl", hash = "sha256:1a3cca2617c6b38c0343ed661b1fa5de5637f257d4fe22bd9f1338010a1efefb"},
-    {file = "soupsieve-2.3.1.tar.gz", hash = "sha256:b8d49b1cd4f037c7082a9683dfa1801aa2597fb11c3a1155b7a5b94829b4f1f9"},
+    {file = "soupsieve-2.3.2-py3-none-any.whl", hash = "sha256:a714129d3021ec17ce5be346b1007300558b378332c289a1a20e7d4de6ff18a5"},
+    {file = "soupsieve-2.3.2.tar.gz", hash = "sha256:0bcc6d7432153063e3df09c3ac9442af3eba488715bfcad6a4c38ccb2a523124"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
@@ -798,8 +798,8 @@ tomli = [
     {file = "tomli-1.2.3.tar.gz", hash = "sha256:05b6166bff487dc068d322585c7ea4ef78deed501cc124060e0f238e89a9231f"},
 ]
 types-requests = [
-    {file = "types-requests-2.27.13.tar.gz", hash = "sha256:cf0646031dd6307113b37814f743c04f0707a3357378c2bb1326f848412f5ba9"},
-    {file = "types_requests-2.27.13-py3-none-any.whl", hash = "sha256:5d6f77f3c7565659bdb7b7bce1d33d1abb7d0b056138cac714860e13da2f19df"},
+    {file = "types-requests-2.27.16.tar.gz", hash = "sha256:c8010c18b291a7efb60b1452dbe12530bc25693dd657e70c62803fcdc4bffe9b"},
+    {file = "types_requests-2.27.16-py3-none-any.whl", hash = "sha256:2437a5f4d16c0c8bd7539a8126d492b7aeb41e6cda670d76b286c7f83a658d42"},
 ]
 types-urllib3 = [
     {file = "types-urllib3-1.26.11.tar.gz", hash = "sha256:24d64e441168851eb05f1d022de18ae31558f5649c8f1117e384c2e85e31315b"},
