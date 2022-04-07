@@ -3,7 +3,7 @@ import re
 from ..utils import Report, fetch
 
 SITE = "fileinfo.com"
-PATH = "/extension/"
+PATH = "/extension"
 
 
 def extract(extension: str) -> list[Report]:
