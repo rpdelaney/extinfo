@@ -22,20 +22,23 @@ __EXTRACTORS__ = [
 @click.version_option()
 @click.argument("extension", type=str)
 def cli(extension: str) -> None:
+    print(f"# {extension}\n")
     for extractor in __EXTRACTORS__:
         try:
             results = extractor.extract(extension)
         except ExtensionNotFoundError as e:
             print(str(e))
         else:
-            print(f"From {extractor.site}\n")
+            print(f"## From {extractor.site}\n")
             for report in results:
-                print(f"# {report.description_short}")
+                print(f"### {report.description_short}")
                 print("")
                 if report.description_long:
-                    print(report.description_long)
+                    print(f"{report.description_long}")
                     print("")
                 if report.how_to_open:
+                    print("#### How to open")
+                    print("")
                     print(report.how_to_open)
                     print("")
 
