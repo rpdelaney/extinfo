@@ -54,7 +54,7 @@ def cli(extension: str, short: bool, one: bool) -> None:
                         print("")
                         print(report.how_to_open)
                         print("")
-            if one:
-                return
+                if one:
+                    return
 
     sys.exit(1)
