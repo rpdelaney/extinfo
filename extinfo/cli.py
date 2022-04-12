@@ -37,7 +37,7 @@ def cli(extension: str, short: bool, one: bool) -> None:
         try:
             results = extractor.extract(extension)
         except ExtensionNotFoundError as e:
-            print(str(e))
+            print(str(e), file=sys.stderr)
         else:
             for report in results:
                 if short:
