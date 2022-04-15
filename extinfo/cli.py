@@ -2,6 +2,7 @@ import sys
 
 import click
 import deal
+from rich.console import Console
 
 from extinfo.extractors import fileinfo_com, filesuffix_com
 
@@ -39,21 +40,21 @@ def cli(extension: str, short: bool, one: bool) -> None:
         except ExtensionNotFoundError as e:
             print(str(e), file=sys.stderr)
         else:
+            console = Console()
             for report in results:
                 if short:
-                    print(f"{report.description_short}")
+                    console.print(f"{report.description_short}")
                 else:
-                    print(f"# From {extractor.site}\n")
-                    print(f"## {report.description_short}")
-                    print("")
+                    console.print(f"# {report.description_short}")
+                    console.print("")
                     if report.description_long:
-                        print(f"{report.description_long}")
-                        print("")
+                        console.print(f"{report.description_long}")
+                        console.print("")
                     if report.how_to_open:
-                        print("### How to open")
-                        print("")
-                        print(report.how_to_open)
-                        print("")
+                        console.print("## How to open")
+                        console.print("")
+                        console.print(report.how_to_open)
+                        console.print("")
                 if one:
                     return
 
