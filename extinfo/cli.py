@@ -35,28 +35,34 @@ __EXTRACTORS__ = [
 )
 @click.argument("extension", type=str)
 def cli(extension: str, short: bool, one: bool) -> NoReturn:
+    console = Console()
+    results = []
     for extractor in __EXTRACTORS__:
         try:
-            results = extractor.extract(extension)
+            results.append(extractor.extract(extension))
         except ExtensionNotFoundError as e:
-            print(str(e), file=sys.stderr)
-        else:
-            console = Console()
-            for report in results:
-                if short:
-                    console.print(f"{report.description_short}")
-                else:
-                    console.print(f"# {report.description_short}")
-                    console.print("")
-                    if report.description_long:
-                        console.print(f"{report.description_long}")
-                        console.print("")
-                    if report.how_to_open:
-                        console.print("## How to open")
-                        console.print("")
-                        console.print(report.how_to_open)
-                        console.print("")
-                if one:
-                    sys.exit(0)
+            console.log(str(e))
 
-    sys.exit(1)
+    # flatten and listify
+    reports = [report for sublist in results for report in sublist]
+
+    for report in reports:
+        if short:
+            console.print(f"{report.description_short}")
+        else:
+            console.print(f"# {report.description_short}")
+            console.print("")
+            if report.description_long:
+                console.print(f"{report.description_long}")
+                console.print("")
+            if report.how_to_open:
+                console.print("## How to open")
+                console.print("")
+                console.print(report.how_to_open)
+                console.print("")
+        if one:
+            break
+    else:
+        sys.exit(1)
+
+    sys.exit(0)
