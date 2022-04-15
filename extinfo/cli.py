@@ -1,4 +1,5 @@
 import sys
+from typing import NoReturn
 
 import click
 import deal
@@ -33,7 +34,7 @@ __EXTRACTORS__ = [
     default=False,
 )
 @click.argument("extension", type=str)
-def cli(extension: str, short: bool, one: bool) -> None:
+def cli(extension: str, short: bool, one: bool) -> NoReturn:
     for extractor in __EXTRACTORS__:
         try:
             results = extractor.extract(extension)
@@ -56,6 +57,6 @@ def cli(extension: str, short: bool, one: bool) -> None:
                         console.print(report.how_to_open)
                         console.print("")
                 if one:
-                    return
+                    sys.exit(0)
 
     sys.exit(1)
