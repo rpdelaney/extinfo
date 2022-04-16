@@ -12,10 +12,10 @@ from .utils import Extractor
 
 deal.activate()
 
-__EXTRACTORS__ = [
+__EXTRACTORS__ = (
     Extractor(filesuffix_com),
     Extractor(fileinfo_com),
-]
+)
 
 
 @click.command(
