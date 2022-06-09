@@ -48,18 +48,9 @@ def cli(extension: str, short: bool, one: bool) -> NoReturn:
 
     for report in reports:
         if short:
-            console.print(f"{report.description_short}")
+            console.print(report.short_form)
         else:
-            console.print(f"# {report.description_short}")
-            console.print("")
-            if report.description_long:
-                console.print(f"{report.description_long}")
-                console.print("")
-            if report.how_to_open:
-                console.print("## How to open")
-                console.print("")
-                console.print(report.how_to_open)
-                console.print("")
+            console.print(report.long_form, "\n\n")
         if one:
             break
     else:
