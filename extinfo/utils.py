@@ -5,7 +5,7 @@ from types import ModuleType
 import requests
 from bs4 import BeautifulSoup as bs
 
-from .exceptions import ExtensionNotFoundError
+from .exceptions import ExtensionNotFoundError, ClientForbiddenError
 
 
 @dataclass()
@@ -33,6 +33,8 @@ def fetch(*, site: str, path: str, extension: str) -> bs:
     match r.status_code:
         case 404:
             raise ExtensionNotFoundError(f"404 from site for url: {url}")
+        case 403:
+            raise ClientForbiddenError(f"403 from site for url: {url}")
         case 200:
             return bs(r.text, "html.parser")
         case _:
