@@ -27,17 +27,17 @@ beautifulsoup4 = "^4.10.0"
 rich = "^12.2.0"
 
 [tool.poetry.dev-dependencies]
-black = "^22.3.0"
-flake8 = "^4.0.1"
-flake8-annotations-complexity = "^0.0.6"
-flake8-bugbear = "^21.9.2"
-flake8-comprehensions = "^3.7.0"
-flake8-simplify = "^0.14.2"
-mypy = "^0.940"
-pytest = "^6.2.5"
-pytest-cov = "^3.0.0"
-flake8-docstrings = "^1.6.0"
-types-requests = "^2.27.12"
+black = "*"
+flake8 = "*"
+flake8-annotations-complexity = "*"
+flake8-bugbear = "*"
+flake8-comprehensions = "*"
+flake8-simplify = "*"
+mypy = "*"
+pytest = "*"
+pytest-cov = "*"
+flake8-docstrings = "*"
+types-requests = "*"
 
 [tool.mypy]
 plugins = ["deal.mypy"]
