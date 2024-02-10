@@ -7,7 +7,7 @@ from rich.console import Console
 
 from extinfo.extractors import fileinfo_com, filesuffix_com
 
-from .exceptions import ExtensionNotFoundError
+from .exceptions import ExtinfoError
 from .utils import Extractor
 
 deal.activate()
@@ -40,7 +40,7 @@ def cli(extension: str, short: bool, one: bool) -> NoReturn:
     for extractor in __EXTRACTORS__:
         try:
             results.append(extractor.extract(extension))
-        except ExtensionNotFoundError as e:
+        except ExtinfoError as e:
             console.log(str(e))
 
     # flatten and listify
