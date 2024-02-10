@@ -5,7 +5,7 @@ from types import ModuleType
 import requests
 from bs4 import BeautifulSoup as bs
 
-from .exceptions import ExtensionNotFoundError, ClientForbiddenError
+from .exceptions import ClientForbiddenError, ExtensionNotFoundError
 
 
 @dataclass()
