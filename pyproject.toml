@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "extinfo"
-version = "0.0.7"
+version = "0.0.8"
 description = "Scrape information about file extensions from web sources"
 authors = ["Ryan Delaney <ryan.patrick.delaney+git@proton.me>"]
 license = "Apache 2.0"
