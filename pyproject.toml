@@ -24,7 +24,7 @@ click = "^8.0.3"
 deal = "^4.19.1"
 requests = "^2.27.1"
 beautifulsoup4 = "^4.10.0"
-rich = "^12.2.0"
+rich = "^14.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "*"
@@ -55,7 +55,7 @@ multi_line_output = 3
 include_trailing_comma = true  # this prevents isort from fighting with black
 
 [tool.poetry.dev-dependencies.isort]
-version = "^5.10.1"
+version = "^7.0.0"
 extras = [ "pyproject",]
 
 [tool.pytest.ini_options]
